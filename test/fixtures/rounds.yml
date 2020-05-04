@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2020-05-04 16:01:57
+  tee: MyString
+  course: one
+  golfer: one
+
+two:
+  date: 2020-05-04 16:01:57
+  tee: MyString
+  course: two
+  golfer: two
