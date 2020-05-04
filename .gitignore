@@ -18,6 +18,12 @@
 !/log/.keep
 !/tmp/.keep
 
+# Ignore ctags generated on each commit
+tags
+
+# Ignore development setup files
+.erdconfig
+
 
 /public/assets
 .byebug_history
