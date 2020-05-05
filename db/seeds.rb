@@ -1,10 +1,14 @@
-user = User.create(email: "matt@test.com", name: "Matt", password: "test")
-user2 = User.create(email: "debbie@test.com", name: "Debbie", password: "test")
-user3 = User.create(email: Faker::Internet.email, name: Faker::Name.name, password: "test")
+user = User.create(email: "matt@test.com", name: "Matt", password: "testtest")
+user2 = User.create(email: "debbie@test.com", name: "Debbie", password: "testtest")
+user3 = User.create(email: Faker::Internet.email, name: Faker::Name.name, password: "testtest")
 
 User.all.each do |u|
   50.times do
-    course = u.created_courses.create(name: Faker::Games::Zelda.location, city: Faker::Address.city, state: Faker::Address.state)
+    course = u.created_courses.create(name: Faker::Games::Zelda.location,
+                                      city: Faker::Address.city,
+                                      state: Faker::Address.state,
+                                      style: %w[Links Desert Parkland].sample,
+                                      access: %w[Public Semi-private Private Resort].sample)
     puts course
     # tee = course.tees.create(color: ["Black", "Blue", "White", "Gold", "Red"].sample)
     # puts tee

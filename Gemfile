@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise', '~> 4.2'
 gem 'cocoon', '~> 1.2', '>= 1.2.14'
 gem 'omniauth-google-oauth2'
+gem 'will_paginate', '~> 3.3'
+gem 'will_paginate-bootstrap4'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
