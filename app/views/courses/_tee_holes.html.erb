@@ -1,16 +1,12 @@
 <h5><%= tee.color %> Tees</h5>
-<div class="container">
+<div class="container mb-4">
   <div class="row">
     <% tee.holes.each do |hole| %>
-      <div class="card text-center mt-2 border-left-0 border-right-0" style="width: 11%">
-        <div class="card-header p-1 b-0">
-          <%= hole.hole_number %>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item p-0"><%= hole.yardage %></li>
-          <li class="list-group-item p-0"><%= hole.par %></li>
-        </ul>
-      </div>
+      <ul class="list-group list-group-flush text-center mt-2" style="width: 11%">
+        <li class="<%= "list-group-item #{tee_list_group_style(tee)} p-2"%>"><%= hole.hole_number %></li>
+        <li class="list-group-item p-1"><%= hole.yardage %></li>
+        <li class="list-group-item p-1"><%= hole.par %></li>
+      </ul>
     <% end %>
   </div>
 </div>

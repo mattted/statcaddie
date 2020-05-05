@@ -10,13 +10,16 @@ User.all.each do |u|
                                       style: %w[Links Desert Parkland].sample,
                                       access: %w[Public Semi-private Private Resort].sample)
     puts course.name
-    tee = course.tees.create(color: ["Black", "Blue", "White", "Gold", "Red"].sample)
-    18.times do |i|
-      tee.holes.create(
-        hole_number: i+1,
-        par: Faker::Number.within(range: 3..5),
-        yardage: Faker::Number.within(range: 150..550)
-      )
+    %w[Black Blue White Gold Red].each do |color|
+      tee = course.tees.create(color: color)
+      puts "  #{tee.color} Tee"
+      18.times do |i|
+        tee.holes.create(
+          hole_number: i+1,
+          par: Faker::Number.within(range: 3..5),
+          yardage: Faker::Number.within(range: 150..550)
+        )
+      end
     end
   end
 end
