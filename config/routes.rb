@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   root to: 'main#index'
   resources :rounds
   resources :courses
+  resources :holes
+  resources :tees
 
 end
