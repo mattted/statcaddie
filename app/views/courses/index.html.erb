@@ -1,8 +1,14 @@
-<h1>Courses</h1>
-<%= link_to 'Create Course', new_course_path, class: "btn btn-primary" %>
+<div class="row">
+  <div class="col">
+    <h1>Courses</h1>
+  </div>
+  <div class="col align-self-center">
+    <%= link_to 'Create Course', new_course_path, class: "btn-sm btn-primary float-right" %>
+  </div>
+</div>
 <br><br>
 <table class="table">
-  <thead>
+  <thead class="thead-dark">
     <tr>
       <th scope="col">Name</th>
       <th scope="col">City</th>
@@ -21,9 +27,7 @@
         <td><%= course.state %></td>
         <td><%= course.style %></td>
         <td><%= course.access %></td>
-        <td><%= link_to 'Show', course %></td>
-        <%# <td><%= link_to 'Edit', edit_course_path(course) %1></td> %>
-        <%# <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %1></td> %>
+        <td><%= link_to 'View', course, class: "btn-sm btn-secondary" %></td>
       </tr>
     <% end %>
   </tbody>
