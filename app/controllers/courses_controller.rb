@@ -19,6 +19,15 @@ class CoursesController < ApplicationController
     end
   end
 
+  def show
+    @course = Course.find_by(id: params[:id])
+    redirect_to courses_path, alert: "Sorry. That course does not exist." if @course.nil?
+  end
+
+  def edit
+    
+  end
+
   private
   
   def course_params

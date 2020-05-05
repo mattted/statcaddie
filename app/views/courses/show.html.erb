@@ -1,0 +1,16 @@
+<h1><%= @course.name %></h1>
+
+<h4>City:</h4>
+<p><%= @course.city %></p>
+
+<h4>State:</h4>
+<p><%= @course.state %></p>
+
+<h4>Access:</h4>
+<p><%= @course.access %></p>
+
+<h4>Style:</h4>
+<p><%= @course.style %></p>
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>
