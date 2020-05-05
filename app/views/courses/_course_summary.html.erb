@@ -1,15 +1,17 @@
 <div class="container">
-  <div class="row">
-    <div class="col-8 pl-0 mb-4">
+  <div class="row mb-0">
+    <div class="col-8 px-0">
       <h1><%= course.name %></h1> 
       <h5><%= "#{course.city}, #{course.state}" %></h5> 
       <p class="badge badge-secondary"><%= course.access %></p>
       <p class="badge badge-secondary"><%= course.style %></p>
     </div>
-    <div class="col mb-4 pb-3 pt-2 pr-0 align-self-end">
-      <%= link_to 'Edit Course Info', edit_course_path(course), class: "btn-sm btn-secondary float-right" %><br><br>
-      <%= link_to 'Delete Course', course, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-sm btn-danger float-right" %><br><br>
-      <%= link_to 'Add Tees', new_course_tee_path(course), class: "btn-sm btn-success float-right" %><br><br>
+    <div class="col px-0 align-self-end">
+      <% if mod_perm(course.creator) %>
+        <%= link_to 'Edit Course Info', edit_course_path(course), class: "btn-sm btn-secondary float-right" %><br><br>
+        <%= link_to 'Delete Course', course, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-sm btn-danger float-right" %><br><br>
+        <%= link_to 'Add Tees', new_course_tee_path(course), class: "btn-sm btn-success float-right" %><br><br>
+      <% end %>
     </div>
   </div>
 </div>

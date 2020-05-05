@@ -1,11 +1,16 @@
 class TeesController < ApplicationController
-  before_action :set_course, only: [:new, create]
+  before_action :set_course, only: [:new, :create]
   before_action :set_tee, only: [:edit, :destroy, :update, :show]
+  before_action :modify_tee_permission, except: [:new, :show]
 
   def new
     set_course
     @tee = @course.tees.new
-    18.times do |i|
+    modify_tee_permission
+
+    # TODO: call a second time with more params
+    # (probably need JS event listener to do automatically)
+    18.times do
       @tee.holes.build
     end
   end
@@ -17,17 +22,23 @@ class TeesController < ApplicationController
   end
 
   def edit
-    set_tee
   end
 
   def update
+    @tee.update(tee_params)
+    error_check('edit')
+  end
 
+  def destroy
+    course = @tee.course
+    @tee.destroy
+    redirect_to course_path(course), notice: "Successfully deleted."
   end
 
   private
 
   def tee_params
-    params.require(:tee).permit(:color, holes_attributes: [:hole_number, :par, :yardage])
+    params.require(:tee).permit(:color, holes_attributes: [:id, :hole_number, :par, :yardage])
   end
 
   def set_course
@@ -40,12 +51,16 @@ class TeesController < ApplicationController
     redirect_to root_path, alert: "Sorry. That tee does not exist." if @tee.nil?
   end
 
+  def modify_tee_permission
+    redirect_to course_path(@tee.course), alert: "Sorry. You can only modify courses you've created." if @tee.course.creator_id != current_user.id
+  end
+
   def error_check(view)
     if @tee.valid?
-      redirect_to course_path(@course), notice: "Tee succesfully added."
+      redirect_to course_path(@tee.course), notice: "Tee succesfully added."
     else
       flash.now[:alert] = @tee.errors.full_messages.join(', ')
-      render view 
+      render view
     end
   end
 

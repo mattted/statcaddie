@@ -1,0 +1,16 @@
+<%= form_with model: tee, local: true do |f| %>
+  <div class="form-group">
+    <%= f.text_field :color, class: "form-control", placeholder: "Tee color..." %>
+  </div>
+
+  <div class="container mb-4">
+    <div class="row">
+      <%= f.fields_for :holes do |ff| %>
+        <%= render 'holes/form_fields', f: ff %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= f.submit "Edit Tee", class: "btn btn-primary" %>
+
+<% end %>

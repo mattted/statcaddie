@@ -51,7 +51,7 @@ class CoursesController < ApplicationController
       render view 
     end
   end
-  
+
   def course_params
     params.require(:course).permit(:name, :city, :state, :access, :style)
   end
