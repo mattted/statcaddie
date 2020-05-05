@@ -1,5 +1,6 @@
 class TeesController < ApplicationController
-  before_action :set_course
+  before_action :set_course, only: [:new, create]
+  before_action :set_tee, only: [:edit, :destroy, :update, :show]
 
   def new
     set_course
@@ -16,7 +17,11 @@ class TeesController < ApplicationController
   end
 
   def edit
-    
+    set_tee
+  end
+
+  def update
+
   end
 
   private
@@ -31,7 +36,8 @@ class TeesController < ApplicationController
   end
 
   def set_tee
-    if params[:course_id]
+    @tee = Tee.find_by(id: params[:id])
+    redirect_to root_path, alert: "Sorry. That tee does not exist." if @tee.nil?
   end
 
   def error_check(view)
