@@ -4,4 +4,6 @@ class Tee < ApplicationRecord
   has_many :rounds, through: :course
   validates :color, presence: true
 
+  accepts_nested_attributes_for :holes, allow_destroy: true
+
 end
