@@ -16,12 +16,12 @@
 
   <div class="form-group">
     <%= f.label :style %><br>
-    <%= f.select :style, options_for_select(%w(Links Parkland Desert)), { include_blank: true }, { class: "form-control" } %>
+    <%= f.collection_select :style, Course.all, :style, :style, { include_blank: true }, { class: "form-control" } %>
   </div>
 
   <div class="form-group">
     <%= f.label :access %>
-    <%= f.select :access, options_for_select(%w(Public Semi-Private Private Resort)), { include_blank: true }, { class: "form-control" } %>
+    <%= f.collection_select :access, Course.all, :access, :access, { include_blank: true }, { class: "form-control" } %>
   </div>
 
   <div class="actions">
