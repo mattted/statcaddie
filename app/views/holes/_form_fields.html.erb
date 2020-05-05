@@ -1,6 +1,5 @@
 <ul class="list-group list-group-flush text-center mt-2" style="width: 11%">
-  <li class="list-group_item list-group-item-secondary p-2"><%= f.text_field :hole_number %></li>
-  <li class="list-group_item p-1"><%= f.text_field :hole_number %></li>
-  <li class="list-group-item p-1"><%= hole.yardage %></li>
-  <li class="list-group-item p-1"><%= hole.par %></li>
+  <li class="list-group-item list-group-item-secondary p-2"><%= f.text_field :hole_number, class: "form-control" %></li>
+  <li class="list-group-item p-1"><%= f.number_field :yardage, placeholder: "Yards", class: "form-control" %></li>
+  <li class="list-group-item p-1"><%= f.number_field :par, placeholder: "Par", class: "form-control" %></li>
 </ul>

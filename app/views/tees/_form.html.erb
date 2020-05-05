@@ -1,7 +1,7 @@
-<%= form_with model: tee, local: true do |f| %>
+<%= form_with model: [course, tee], local: true do |f| %>
   <div class="form-group">
-    <%= f.label :color, "Tee Color" %>
-    <%= f.text_field :color, class: "form-control" %>
+    <%# <%= f.label :color, "Tee Color" %1> %>
+    <%= f.text_field :color, class: "form-control", placeholder: "Tee color..." %>
   </div>
 
   <div class="container mb-4">
@@ -11,6 +11,8 @@
       <% end %>
     </div>
   </div>
+
+  <%= f.submit "Create Tee", class: "btn btn-primary" %>
 
 <% end %>
 
