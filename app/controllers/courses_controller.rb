@@ -10,7 +10,13 @@ class CoursesController < ApplicationController
   end
 
   def create
-    binding.pry
+    @course = current_user.created_courses.create(course_params)
+    if @course.valid?
+      redirect_to course_path(@course)
+    else
+      flash.now[:alert] = @course.errors.full_messages.join(', ')
+      render 'new'
+    end
   end
 
   private
