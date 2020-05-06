@@ -9,6 +9,9 @@
         <%= link_to 'Delete', tee, method: :delete, data: { confirm: 'Are you sure?' }, class: "badge badge-danger" %>
       <% end %>
     </div>
+    <div class="col-auto ml-auto mt-1 pr-2">
+      <h6>Par: <%= tee.par %> | <%= tee.yardage %> yards</h6>  
+    </div>
   </div>
   <div class="row">
     <% tee.holes.each do |hole| %>

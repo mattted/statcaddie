@@ -8,4 +8,12 @@ class Tee < ApplicationRecord
   # 9 or 18 holes only? Only colors that don't exist already?
   accepts_nested_attributes_for :holes, allow_destroy: true, reject_if: :all_blank
 
+  def par
+    self.holes.pluck(:par).sum
+  end
+
+  def yardage
+    self.holes.pluck(:yardage).sum
+  end
+
 end
