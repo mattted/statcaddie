@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row mb-0">
+    <div class="col-8 px-0">
+      <h1>New Round</h1></h1> 
+    <h3><%= @round.course.name %> | <%= @round.date %></h5> 
+      <h5><%= "#{@round.course.city}, #{@round.course.state}" %></h5> 
+      <p class="badge badge-secondary"><%= @round.course.access %></p>
+      <p class="badge badge-secondary"><%= @round.course.style %></p>
+    </div>
+  </div>
+</div>
+
+<%= form_with model: @round, local: true do |f| %>
+  <div class="container mb-4">
+    <div class="row">
+      <%= f.fields_for :scorecards do |ff| %>
+        <%= render 'scorecards/form_fields', f: ff %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= f.submit "Create Scorecard", class: "btn btn-primary" %>
+
+<% end %>

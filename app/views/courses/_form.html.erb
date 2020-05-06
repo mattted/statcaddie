@@ -16,7 +16,7 @@
 
   <div class="form-group">
     <%= f.label :style %><br>
-    <% binding.pry %> <%= f.select :style, options_for_select(Course.pluck(:style).uniq.sort), { prompt: "Select one" }, { class: "form-control" } %>
+    <%= f.select :style, options_for_select(Course.pluck(:style).uniq.sort), { prompt: "Select one" }, { class: "form-control" } %>
   </div>
 
   <div class="form-group">
