@@ -1,5 +1,9 @@
 module CoursesHelper
+
   def mod_perm(user)
-    true if current_user.id == user.id
+    if user_signed_in?
+      true if current_user == user
+    end
   end
+
 end

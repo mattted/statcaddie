@@ -5,6 +5,6 @@ class Course < ApplicationRecord
   has_many :holes, through: :tees
   belongs_to :creator, class_name: "User", optional: true
 
-  validates :name, presence: true
+  validates :name, :city, :state, :style, :access, presence: true
 
 end

@@ -1,11 +1,11 @@
 class TeesController < ApplicationController
   before_action :set_course, only: [:new, :create]
   before_action :set_tee, only: [:edit, :destroy, :update, :show]
-  before_action :modify_tee_permission, except: [:new, :show]
+  before_action :modify_tee_permission, except: [:new, :create, :show]
 
   def new
     set_course
-    @tee = @course.tees.new
+    @tee = @course.tees.build
     modify_tee_permission
 
     # TODO: call a second time with more params
@@ -17,7 +17,9 @@ class TeesController < ApplicationController
 
   def create
     set_course
-    @tee = @course.tees.create(tee_params)
+    @tee = @course.tees.build(tee_params)
+    modify_tee_permission
+    @tee.save
     error_check('new')
   end
 
