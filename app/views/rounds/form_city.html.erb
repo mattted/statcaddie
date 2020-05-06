@@ -1,0 +1,19 @@
+<h1>New Round</h1>
+<%= form_with url: { action: :factory }, method: 'get', local: true do %>
+  <div class="row">
+    <div class="col-auto pr-1">
+      <h5>State:</h5>
+    </div>
+    <div class="col-auto">
+      <h6><%= @courses.first.state %></h6> 
+    </div>
+  </div>
+  <div class="form-group">
+    <%= hidden_field_tag :state, @courses.first.state %>
+    <%= label_tag :city %>
+    <%= select_tag :city, options_for_select(@courses.pluck(:city).uniq.sort), class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Next", class: "btn btn-primary" %>
+  </div>
+<% end %>
