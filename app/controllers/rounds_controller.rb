@@ -3,15 +3,14 @@ class RoundsController < ApplicationController
 
   def create
     @round = Round.create(round_params)
+    params[:round][:holes].to_i.times do |i|
+      @round.scorecards.build(hole_number: i+1)
+    end
     error_check('form_state')
   end
 
   def show
-    binding.pry
-  end
-
-  def wizard
-    render 'form_state'
+    binding.pry 
   end
 
   def factory
@@ -36,14 +35,15 @@ class RoundsController < ApplicationController
   private
 
   def round_params
-    params.require(:round).permit(:course_id, :golfer_id, :date)
+    params.require(:round).permit(:course_id, :golfer_id, :date, :tee,
+                                  scorecards_attributes: [:fairway, :gir, :hole_number, :notes, :putts, :strokes, :id])
   end
 
-  def error_check(view)
+  def error_check(view = "")
     if @round.valid?
-      redirect_to round_path(@round)
+      redirect_to round_path(@round) if view.blank?
+      render 'scorecards'
     else
-      binding.pry
       flash.now[:alert] = @round.errors.full_messages.join(', ')
       render view
     end

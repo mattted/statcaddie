@@ -2,6 +2,7 @@
 <%= form_with model: @round, local: true do |f| %>
   <%= f.hidden_field :course_id, value: @round.course.id %>
   <%= f.hidden_field :golfer_id, value: @round.golfer.id %>
+  <%= f.hidden_field :holes, value: params[:holes] %>
   <div class="row">
     <div class="col-auto pr-1">
       <h5>State:</h5>
@@ -35,7 +36,7 @@
     <%= f.select :tee, options_for_select(@round.course.tees.pluck(:color).sort), { prompt: "Select Tee.." }, { class: "form-control" } %>
   </div>
   <div class="actions">
-    <%= submit_tag "Create Round", class: "btn btn-primary" %>
+    <%= submit_tag "Next", class: "btn btn-primary" %>
   </div>
 <% end %>
 

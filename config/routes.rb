@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   root to: 'main#index'
 
-  get '/rounds/wizard', to: 'rounds#wizard'
   get '/rounds/factory', to: 'rounds#factory'
 
   resources :rounds, shallow: true do

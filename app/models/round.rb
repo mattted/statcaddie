@@ -5,4 +5,6 @@ class Round < ApplicationRecord
 
   validates :date, presence: true
 
+  accepts_nested_attributes_for :scorecards, allow_destroy: true, reject_if: :all_blank
+
 end

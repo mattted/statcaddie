@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_025421) do
 
   add_foreign_key "holes", "tees"
   add_foreign_key "rounds", "courses"
-  add_foreign_key "rounds", "golfers"
+  add_foreign_key "rounds", "users", column: "golfer_id"
   add_foreign_key "scorecards", "rounds"
   add_foreign_key "tees", "courses"
 end
