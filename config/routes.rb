@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :scorecards
   devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'callbacks' }
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
@@ -7,7 +6,12 @@ Rails.application.routes.draw do
   end
 
   root to: 'main#index'
-  resources :rounds
+
+  resources :rounds, shallow: true do
+    resources :scorecards
+    get :state
+  end
+
   resources :courses, shallow: true do
     resources :tees
     resources :holes
