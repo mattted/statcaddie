@@ -1,7 +1,8 @@
-<%= form_with url: '/rounds/factory', method: 'get' do %>
+<%= form_with url: { action: :factory }, method: 'get', local: true do %>
   <div class="form-group">
     <%= label_tag :state %>
-    <%= select_tag :state, options_for_select(Course.pluck(:state).uniq.sort), { prompt: "Select one" }, { class: "form-control" } %>
+    <%# <%= select_tag :state, options_for_select(Course.pluck(:state).uniq.sort), { prompt: "Select one" }, { class: "form-control" } %1> %>
+    <%= select_tag :state, options_for_select(Course.pluck(:state).uniq.sort), class: "form-control" %>
   </div>
   <div class="actions">
     <%= submit_tag "Next", class: "btn btn-primary" %>

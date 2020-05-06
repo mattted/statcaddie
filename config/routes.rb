@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :rounds, shallow: true do
     resources :scorecards
-    get :state
+    get :factory
   end
 
   resources :courses, shallow: true do
