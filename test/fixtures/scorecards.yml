@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fairway: false
+  gir: false
+  hole_number: 1
+  notes: MyText
+  putts: 1
+  strokes: 1
+  round: one
+
+two:
+  fairway: false
+  gir: false
+  hole_number: 1
+  notes: MyText
+  putts: 1
+  strokes: 1
+  round: two
