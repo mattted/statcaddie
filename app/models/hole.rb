@@ -12,7 +12,7 @@ class Hole < ApplicationRecord
   def scores
     scores = Scorecard.arel_table
     Scorecard.where(scores[:round_id].in(self.rounds.pluck(:id))
-      .and(scores[:hole_number].eq(self.hole_number)))
+      .and(scores[:hole_number].eq(self.hole_number))).order(:strokes).limit(5)
   end
 
 end

@@ -1,0 +1,52 @@
+<%= render 'courses/course_summary', course: @tee.course %>
+<div class="container mb-4">
+  <div class="row">
+    <div class="col-auto px-0">
+      <h5><%= @tee.color %> Tees</h5>
+    </div>
+    <div class="col-auto pl-3">
+      <% if mod_perm(@tee.course.creator) %>
+        <%= link_to "Edit", edit_tee_path(@tee), class: "badge badge-secondary" %>
+        <%= link_to 'Delete', @tee, method: :delete, data: { confirm: 'Are you sure?' }, class: "badge badge-danger" %>
+      <% end %>
+    </div>
+    <div class="col-auto ml-auto mt-1 pr-2">
+      <h6>Par: <%= @tee.par %> | <%= @tee.yardage %> yards</h6>  
+    </div>
+  </div>
+  <div class="row">
+    <% @tee.holes.each do |hole| %>
+      <ul class="list-group list-group-flush text-center mt-2" style="width: 11%">
+        <li class="<%= "list-group-item #{tee_list_group_style(@tee)} p-2"%>"><%= hole.hole_number %></li>
+        <li class="list-group-item p-1"><%= hole.yardage %></li>
+        <li class="list-group-item p-1"><%= hole.par %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>
+<h5>Lowest Rounds</h5>
+  <% if @tee.rounds.blank? %>
+    <h6>No rounds yet...</h6>
+  <% else %>
+  <table class="table">
+    <thead class="thead">
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Golfer</th>
+        <th scope="col">Strokes</th>
+        <th scope="col">Round</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @tee.lowest_rounds.each do |round| %>
+        <tr>
+          <td><%= round.datef %></td>
+          <td><%= round.golfer.name %></td>
+          <td><%= round.total %></td>
+          <td><%= link_to 'View', round, class: "btn-sm btn-secondary" %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

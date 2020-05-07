@@ -7,14 +7,17 @@
   </div>
 </div>
 <br><br>
-<table class="table">
+<table class="table text-center">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Date</th>
       <th scope="col">Course</th>
       <th scope="col">Holes</th>
-      <th scope="col">Strokes</th>
       <th scope="col">Par</th>
+      <th scope="col">Strokes</th>
+      <th scope="col">Putts</th>
+      <th scope="col">G.I.R.</th>
+      <th scope="col">Fairways</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -22,11 +25,14 @@
   <tbody>
     <% @rounds.each do |round| %>
       <tr>
-        <td><%= round.date %></td>
+        <td><%= round.datef %></td>
         <td><%= round.course.name %></td>
         <td><%= round.scorecards.count %></td>
-        <td><%= round.total %></td>
         <td><%= round.par %></td>
+        <td><%= round.total %></td>
+        <td><%= round.scorecards.sum(:putts) %></td>
+        <td><%= round.total_gir %></td>
+        <td><%= round.total_fairways %></td>
         <td><%= link_to 'View', round, class: "btn-sm btn-secondary" %></td>
       </tr>
     <% end %>
