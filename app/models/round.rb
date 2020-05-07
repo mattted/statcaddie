@@ -3,7 +3,7 @@ class Round < ApplicationRecord
   belongs_to :course
   has_many :scorecards, dependent: :destroy
 
-  validates :date, presence: true
+  validates :date, :tee, presence: true
 
   accepts_nested_attributes_for :scorecards, allow_destroy: true, reject_if: :all_blank
 

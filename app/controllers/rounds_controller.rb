@@ -3,14 +3,27 @@ class RoundsController < ApplicationController
 
   def create
     @round = Round.create(round_params)
-    params[:round][:holes].to_i.times do |i|
-      @round.scorecards.build(hole_number: i+1)
+    if @round.valid?
+      params[:round][:holes].to_i.times do |i|
+        @round.scorecards.build(hole_number: i+1)
+      end
+      render 'scorecards'
+    else
     end
-    error_check('form_state')
   end
 
   def show
-    binding.pry 
+    binding.pry
+  end
+
+  def update
+    set_round
+    @round.update(round_params)
+    if @round.valid?
+      redirect_to round_path(@round)
+    else
+      error_check('edit')
+    end
   end
 
   def factory
@@ -34,19 +47,20 @@ class RoundsController < ApplicationController
 
   private
 
+  def set_round
+    unless @round = Round.find_by(id: params[:id])
+      redirect_to home_path, alert: "Could not find a round with that ID."
+    end
+  end
+
+  def error_check(view)
+    flash.now[:alert] = @round.errors.full_messages.join(', ')
+    render view
+  end
+
   def round_params
     params.require(:round).permit(:course_id, :golfer_id, :date, :tee,
                                   scorecards_attributes: [:fairway, :gir, :hole_number, :notes, :putts, :strokes, :id])
-  end
-
-  def error_check(view = "")
-    if @round.valid?
-      redirect_to round_path(@round) if view.blank?
-      render 'scorecards'
-    else
-      flash.now[:alert] = @round.errors.full_messages.join(', ')
-      render view
-    end
   end
 
 end
