@@ -24,6 +24,8 @@ tags
 # Ignore development setup files
 .erdconfig
 
+notes.md
+
 
 /public/assets
 .byebug_history
