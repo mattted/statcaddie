@@ -1,6 +1,10 @@
 class RoundsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @rounds = current_user.rounds.paginate(page: params[:page], per_page: 15)
+  end
+
   def create
     @round = Round.create(round_params)
     if @round.valid?

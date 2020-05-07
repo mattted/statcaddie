@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col">
+    <h1>Rounds</h1>
+  </div>
+  <div class="col align-self-center">
+    <%= link_to 'Add Round', rounds_factory_path, class: "btn-sm btn-primary float-right" %>
+  </div>
+</div>
+<br><br>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Course</th>
+      <th scope="col">Holes</th>
+      <th scope="col">Strokes</th>
+      <th scope="col">Par</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rounds.each do |round| %>
+      <tr>
+        <td><%= round.date %></td>
+        <td><%= round.course.name %></td>
+        <td><%= round.scorecards.count %></td>
+        <td><%= round.total %></td>
+        <td><%= round.par %></td>
+        <td><%= link_to 'View', round, class: "btn-sm btn-secondary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @rounds, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>

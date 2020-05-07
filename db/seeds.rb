@@ -27,13 +27,13 @@ User.all.each do |u|
   end
 end
 
-# User.all.each do |user|
-#   20.times do
-#     course = Course.all.sample
-#     round = user.rounds.create(date: Faker::Date.between(from: 1.year.ago, to: Date.today), course: course) 
-#     18.times do |i|
-#       round.scorecards.create(hole_number: i+1, fairway: Faker::Number.within(range: 0..1), gir: Faker::Number.within(range: 0..1), putts: Faker::Number.within(range: 1..3), strokes: Faker::Number.within(range: 3..6))
-#     end
-#     puts round.scorecards.pluck(:strokes).sum
-#   end
-# end
+User.all.each do |user|
+  20.times do
+    course = Course.all.sample
+    round = user.rounds.create(date: Faker::Date.between(from: 1.year.ago, to: Date.today), course: course, tee: course.tees.sample.color) 
+    18.times do |i|
+      round.scorecards.create(hole_number: i+1, fairway: Faker::Number.within(range: 0..1), gir: Faker::Number.within(range: 0..1), putts: Faker::Number.within(range: 1..3), strokes: Faker::Number.within(range: 3..6))
+    end
+    puts round.scorecards.pluck(:strokes).sum
+  end
+end
