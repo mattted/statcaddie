@@ -1,5 +1,14 @@
 <ul class="list-group list-group-flush text-center mt-2" style="width: 11%">
-  <li class="list-group-item list-group-item-secondary p-2"><%= f.text_field :hole_number, class: "form-control" %></li>
-  <li class="list-group-item p-1"><%= f.number_field :yardage, placeholder: "Yards", class: "form-control" %></li>
-  <li class="list-group-item p-1"><%= f.number_field :par, placeholder: "Par", class: "form-control" %></li>
+  <li class="list-group-item list-group-item-secondary p-2">
+    <small class="form-text text-muted">Hole</small>
+    <%= f.text_field :hole_number, class: "form-control form-control-sm" %>
+  </li>
+  <li class="list-group-item p-1">
+    <small class="form-text text-muted">Yards</small>
+    <%= f.number_field :yardage, class: "form-control form-control-sm" %>
+  </li>
+  <li class="list-group-item p-1">
+    <small class="form-text text-muted">Par</small>
+    <%= f.number_field :par, class: "form-control form-control-sm" %>
+  </li>
 </ul>
