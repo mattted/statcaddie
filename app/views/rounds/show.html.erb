@@ -29,7 +29,13 @@
         </li>
         <li class="list-group-item p-1">
           <small class="form-text text-muted">Strokes</small>
-          <small class="form-text"><%= scorecard.strokes %></small>
+          <% if scorecard.strokes < scorecard.par  %>
+            <small class="form-text text-success"><%= scorecard.strokes %></small>
+          <% elsif scorecard.strokes == scorecard.par %>
+            <small class="form-text"><%= scorecard.strokes %></small>
+          <% else %>
+            <small class="form-text text-danger"><%= scorecard.strokes %></small>
+          <% end %>
         </li>
         <li class="list-group-item p-1">
           <small class="form-text text-muted">Putts</small>
@@ -37,11 +43,19 @@
         </li>
         <li class="list-group-item p-1">
           <small class="form-text text-muted">G.I.R.</small>
-          <small class="form-text"><%= scorecard.gir %></small>
+          <% if scorecard.gir %>
+            <p class="text-success">&#9679;</p>
+          <% else %>
+            <p class="text-danger">&#9679;</p>
+          <% end %>
         </li>
         <li class="list-group-item p-1">
           <small class="form-text text-muted">Fairway</small>
-          <small class="form-text"><%= scorecard.fairway %></small>
+          <% if scorecard.fairway %>
+            <p class="text-success">&#9679;</p>
+          <% else %>
+            <p class="text-danger">&#9679;</p>
+          <% end %>
         </li>
       </ul>
     <% end %>
