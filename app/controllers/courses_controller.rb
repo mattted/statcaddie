@@ -1,10 +1,20 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy, :update, :index_golfed]
   before_action :set_course, only: [:show, :edit, :destroy, :update]
   before_action :modify_course_permission, only: [:edit, :destroy, :update]
 
   def index
     @courses = Course.paginate(page: params[:page], per_page: 15)
+  end
+
+  def index_golfed
+    @courses = current_user.courses.paginate(page: params[:page], per_page: 15)
+    render 'index'
+  end
+
+  def index_created
+    @courses = current_user.created_courses.paginate(page: params[:page], per_page: 15)
+    render 'index'
   end
 
   def new
