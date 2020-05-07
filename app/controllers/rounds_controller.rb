@@ -13,7 +13,11 @@ class RoundsController < ApplicationController
   end
 
   def show
-    binding.pry
+    set_round
+  end
+
+  def edit
+    set_round
   end
 
   def update

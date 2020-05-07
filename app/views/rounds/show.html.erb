@@ -1,2 +1,51 @@
-<h1>View Round</h1>
+<div class="container">
+  <div class="row mb-0">
+    <div class="col-8 px-0">
+      <h1>View Round</h1>
+      <h3><%= @round.course.name %> | <%= @round.date %></h3> 
+      <h5><%= "#{@round.course.city}, #{@round.course.state}" %></h5> 
+      <h5><%= "#{@round.tee} Tees" %></h5> 
+      <p class="badge badge-secondary"><%= @round.course.access %></p>
+      <p class="badge badge-secondary"><%= @round.course.style %></p>
+    </div>
+    <div class="col px-0 align-self-end">
+      <% if mod_perm(@round.golfer) %>
+        <%= link_to 'Edit Round', edit_round_path(@round), class: "btn-sm btn-secondary float-right" %><br><br>
+        <%= link_to 'Delete Round', @round, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-sm btn-danger float-right" %><br><br>
+      <% end %>
+    </div>
+  </div>
+</div>
 
+<div class="container mb-4">
+  <div class="row">
+
+    <% @round.scorecards.each do |scorecard| %>
+      <ul class="list-group list-group-flush text-center mt-2" style="width: 11%">
+        <li class="list-group-item list-group-item-secondary p-2">
+          <small class="form-text">Hole</small>
+          <small class="form-text"><%= scorecard.hole_number %></small>
+          <small class="form-text">Par <%= scorecard.par %></small>
+          <small class="form-text"><%= scorecard.yardage %> yds</small>
+        </li>
+        <li class="list-group-item p-1">
+          <small class="form-text text-muted">Strokes</small>
+          <small class="form-text"><%= scorecard.strokes %></small>
+        </li>
+        <li class="list-group-item p-1">
+          <small class="form-text text-muted">Putts</small>
+          <small class="form-text"><%= scorecard.putts %></small>
+        </li>
+        <li class="list-group-item p-1">
+          <small class="form-text text-muted">G.I.R.</small>
+          <small class="form-text"><%= scorecard.gir %></small>
+        </li>
+        <li class="list-group-item p-1">
+          <small class="form-text text-muted">Fairway</small>
+          <small class="form-text"><%= scorecard.fairway %></small>
+        </li>
+      </ul>
+    <% end %>
+
+  </div>
+</div>
