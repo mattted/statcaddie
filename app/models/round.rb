@@ -29,6 +29,10 @@ class Round < ApplicationRecord
     self.scorecards.where(fairway: true).count
   end
 
+  def over_under
+    self.total - self.par
+  end
+
   def datef
     self.date.strftime("%-m/%-d/%Y")
   end

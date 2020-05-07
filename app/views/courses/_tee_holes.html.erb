@@ -17,9 +17,9 @@
   <div class="row">
     <% tee.holes.each do |hole| %>
       <ul class="list-group list-group-flush text-center mt-2" style="width: 11%">
-        <li class="<%= "list-group-item #{tee_list_group_style(tee)} p-2"%>"><%= hole.hole_number %></li>
-        <li class="list-group-item p-1"><%= hole.yardage %></li>
-        <li class="list-group-item p-1"><%= hole.par %></li>
+        <li class="<%= "list-group-item #{tee_list_group_style(tee)} p-2"%>"><small><%= hole.hole_number %></small></li>
+        <li class="list-group-item p-1"><small><%= hole.yardage %></small></li>
+        <li class="list-group-item p-1"><small><%= hole.par %></small></li>
       </ul>
     <% end %>
   </div>

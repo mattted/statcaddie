@@ -7,4 +7,8 @@ class Course < ApplicationRecord
 
   validates :name, :city, :state, :style, :access, presence: true
 
+  def best_rounds
+    self.rounds.sort(&:over_under)
+  end
+
 end

@@ -1,5 +1,40 @@
 <%= render 'course_summary', course: @course %>
+<h5 class="mt-4">Best Rounds</h5>
+  <% if @course.rounds.blank? %>
+    <h6>No rounds yet...</h6>
+  <% else %>
+  <table class="table text-center mb-5">
+    <thead class="thead">
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Tees</th>
+        <th scope="col">Golfer</th>
+        <th scope="col">Strokes</th>
+        <th scope="col">Over/Under</th>
+        <th scope="col">Round</th>
+      </tr>
+    </thead>
 
-<% @course.tees.each do |tee| %>
-  <%= render 'tee_holes', tee: tee %>
-<% end %>
+    <tbody>
+      <% @course.best_rounds.each do |round| %>
+        <tr>
+          <td><%= round.datef %></td>
+          <td><%= round.tee %></td>
+          <td><%= round.golfer.name %></td>
+          <td><%= round.total %></td>
+          <td><%= round.over_under %></td>
+          <td><%= link_to 'View', round, class: "btn-sm btn-secondary" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>
+
+
+<div class="row">
+  <% @course.tees.each do |tee| %>
+    <div class="col-6">
+      <%= render 'tee_holes', tee: tee %>
+    </div>
+  <% end %>
+</div>
