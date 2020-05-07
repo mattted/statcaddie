@@ -1,5 +1,6 @@
 class Scorecard < ApplicationRecord
   belongs_to :round
+  has_one :golfer, through: :round, class_name: "User"
   validates :hole_number, :strokes, :putts, presence: true
 
   def par

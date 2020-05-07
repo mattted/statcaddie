@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row mb-0">
+    <div class="col-8 px-0">
+      <h1>Hole <%= @hole.hole_number %></%=></h1>
+      <h3><%= @hole.tee.course.name %></h3> 
+      <h5><%= "#{@hole.tee.course.city}, #{@hole.tee.course.state}" %></h5> 
+      <h5><%= "#{@hole.tee.color} Tee | Par #{@hole.par}" %></h5> 
+      <p class="badge badge-secondary"><%= @hole.tee.course.access %></p>
+      <p class="badge badge-secondary"><%= @hole.tee.course.style %></p>
+    </div>
+    <div class="col px-0 align-self-end">
+      <%= link_to 'Show Tee', @hole.tee, class: "btn-sm btn-secondary float-right" %><br><br>
+      <%= link_to 'Show Course', @hole.tee.course, class: "btn-sm btn-secondary float-right" %><br><br>
+    </div>
+  </div>
+</div>
+<h5>Lowest Scores</h5>
+  <% if @hole.scores.blank? %>
+    <h6>No scores yet</h6>
+  <% else %>
+  <table class="table">
+    <thead class="thead">
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Golfer</th>
+        <th scope="col">Strokes</th>
+        <th scope="col">Round</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @hole.scores.each do |score| %>
+        <tr>
+          <td><%= score.round.datef %></td>
+          <td><%= score.golfer.name %></td>
+          <td><%= score.strokes %></td>
+          <td><%= link_to 'View', score.round, class: "btn-sm btn-secondary" %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

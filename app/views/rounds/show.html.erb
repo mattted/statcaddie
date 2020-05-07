@@ -1,8 +1,7 @@
 <div class="container">
   <div class="row mb-0">
     <div class="col-8 px-0">
-      <h1>View Round</h1>
-      <h3><%= @round.course.name %> | <%= @round.date %></h3> 
+      <h1>Round at <%= @round.course.name %> | <%= @round.datef %></h1> 
       <h5><%= "#{@round.course.city}, #{@round.course.state}" %></h5> 
       <h5><%= "#{@round.tee} Tees" %></h5> 
       <p class="badge badge-secondary"><%= @round.course.access %></p>
