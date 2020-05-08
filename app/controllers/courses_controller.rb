@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy, :update, :index_golfed]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy, :update, :index_golfed, :index_created]
   before_action :set_course, only: [:show, :edit, :destroy, :update]
   before_action :modify_course_permission, only: [:edit, :destroy, :update]
 

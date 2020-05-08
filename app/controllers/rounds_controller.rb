@@ -1,8 +1,20 @@
 class RoundsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
+    @rounds = Round.paginate(page: params[:page], per_page: 15)
+  end
+
+  def index_user
     @rounds = current_user.rounds.paginate(page: params[:page], per_page: 15)
+    render 'index'
+  end
+
+  def index_course
+    @rounds = Round.where(Round.arel_table[:course_id]
+      .in(current_user.created_courses.pluck(:id)))
+      .paginate(page: params[:page], per_page: 15)
+    render 'index'
   end
 
   def create

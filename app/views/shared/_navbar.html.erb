@@ -7,8 +7,6 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
-      <li class="nav-item"><%= link_to "Rounds", rounds_path, class: "nav-link" %></li>
-      <li class="nav-item"><%= link_to "Stats", rounds_path, class: "nav-link" %></li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Courses
@@ -19,6 +17,17 @@
           <%= link_to "Created Courses", my_courses_path, class: "dropdown-item" %>
         </div>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Rounds
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "All Rounds", rounds_path, class: "dropdown-item" %>
+          <%= link_to "My Rounds", my_rounds_path, class: "dropdown-item" %>
+          <%= link_to "Rounds at Created Courses", course_rounds_path, class: "dropdown-item" %>
+        </div>
+      </li>
+      <li class="nav-item"><%= link_to "Stats", rounds_path, class: "nav-link" %></li>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">

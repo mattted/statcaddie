@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get '/rounds/factory', to: 'rounds#factory'
   get '/my_courses', to: 'courses#index_created'
   get '/golfed_courses', to: 'courses#index_golfed'
+  get '/my_rounds', to: 'rounds#index_user'
+  get '/course_rounds', to: 'rounds#index_course'
 
   resources :rounds, shallow: true do
     resources :scorecards

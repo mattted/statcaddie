@@ -23,6 +23,7 @@
   </thead>
 
   <tbody>
+
     <% @rounds.each do |round| %>
       <tr>
         <td><%= round.datef %></td>
@@ -39,3 +40,6 @@
   </tbody>
 </table>
 <%= will_paginate @rounds, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+<% if @rounds.blank? %>
+  <h6>No rounds yet...</h6>
+<% end %>
