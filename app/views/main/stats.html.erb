@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row mb-0">
+    <div class="col-3 px-0">
+      <h1><%= current_user.name %></h1> 
+      <h5>Signup: <%= current_user.created_at.strftime("%m/%d/%Y") %></h5> 
+      <%# <p class="badge badge-secondary"><%= course.access %1></p> %>
+      <%# <p class="badge badge-secondary"><%= course.style %1></p> %>
+    </div>
+    <div class="col mt-3 text-center">
+      <h6>Average Strokes</h6>
+      <h4><%= current_user.average_round %></h4>
+    </div>
+    <div class="col mt-3 text-center">
+      <h6>Average Round</h6>
+      <h4><%= current_user.average_score %></h4>
+    </div>
+    <div class="col mt-3 text-center">
+      <h6>Average Putts</h6>
+      <h4><%= current_user.average_putts %></h4>
+    </div>
+    <div class="col mt-3 text-center">
+      <h6>Average Fairways</h6>
+      <h4><%= current_user.average_fairways %></h4>
+    </div>
+    <div class="col px-0 align-self-end">
+      <%= link_to 'Create Course', new_course_path, class: "btn-sm btn-primary float-right" %><br><br>
+      <%= link_to 'New Round', new_round_path, class: "btn-sm btn-info float-right" %><br><br>
+    </div>
+  </div>
+</div>
+
+<h5 class="mt-4">Best Rounds</h5>
+  <% if current_user.rounds.blank? %>
+    <h6 class="mb-5">No rounds yet...</h6>
+  <% else %>
+  <table class="table nord text-center mb-5">
+    <thead class="thead nord-head">
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Course</th>
+        <th scope="col">Tees</th>
+        <th scope="col">Par</th>
+        <th scope="col">Strokes</th>
+        <th scope="col">Over/Under</th>
+        <th scope="col">Round</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% current_user.best_rounds.each do |round| %>
+        <tr>
+          <td><%= round.datef %></td>
+          <td><%= round.course.name %></td>
+          <td><%= round.tee %></td>
+          <td><%= round.par %></td>
+          <td><%= round.total %></td>
+          <td><%= round.over_under %></td>
+          <td><%= link_to 'View', round, class: "btn-sm btn-secondary" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>
+

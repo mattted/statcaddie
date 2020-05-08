@@ -1,4 +1,5 @@
 class MainController < ApplicationController
-  def index
+  def stats
+    
   end
 end

@@ -14,4 +14,32 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
     end
   end
+
+  def best_rounds
+    self.rounds.sort_by(&:over_under_num).first(5)
+  end
+
+  def average_round
+    self.rounds.map(&:total).sum / self.rounds.count.to_f
+  end
+
+  def average_score
+    ou =self.rounds.map(&:over_under_num).sum / self.rounds.count.to_f
+    if ou > 0
+      "+#{ou}"
+    elsif ou == 0
+      "E"
+    else
+      ou
+    end
+  end
+
+  def average_putts
+    self.rounds.map(&:total_putts).sum / self.rounds.count.to_f
+  end
+
+  def average_fairways
+    self.rounds.map(&:total_fairways).sum / self.rounds.count.to_f
+  end
+
 end

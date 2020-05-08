@@ -29,6 +29,10 @@ class Round < ApplicationRecord
     self.scorecards.where(fairway: true).count
   end
 
+  def over_under_num
+    self.total - self.par
+  end
+
   def over_under
     ou = self.total - self.par
     if ou > 0
