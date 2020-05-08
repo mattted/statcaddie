@@ -1,2 +1,62 @@
-@import "~bootstrap/scss/bootstrap";
+// COLORS
+// polar night
+$nord0: #2E3440;
+$nord1: #3B4252;
+$nord2: #434C5E;
+$nord3: #4C566A;
+// snow storm
+$nord4: #D8DEE9;
+$nord5: #E5E9F0;
+$nord6: #ECEFF4;
+// frost
+$nord7: #8FBCBB;
+$nord8: #88C0D0;
+$nord9: #81A1C1;
+$nord10: #5E81AC;
+// aurora
+$nord11: #BF616A;
+$nord12: #D08770;
+$nord13: #EBCB8B;
+$nord14: #A3BE8C;
+$nord15: #B48EAD;
 
+$primary: $nord3;
+$secondary: $nord4;
+$success: $nord14;
+$danger: $nord11;
+$warning: $nord13;
+$info: $nord9;
+$dark: $nord1;
+$blue: $nord8;
+
+
+@import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed&display=swap');
+
+body {
+  font-family: 'Fira Sans Extra Condensed', sans-serif; 
+  background-color: $light;
+}
+
+.table.nord {
+  background-color: white;
+  td {
+    padding: 0.35rem 0.75rem;
+    font-size: 10px;
+  }
+
+  .nord-head {
+    background-color: $nord1;
+    color: $light;
+
+    th {
+      padding: 0.35rem 0.75rem;
+      font-size: 10px;
+    }
+  }
+}
+
+.list-group-item-secondary {
+  background-color: $nord1;
+  color: $light;
+}

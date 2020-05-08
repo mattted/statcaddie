@@ -4,7 +4,7 @@ module TeesHelper
     when "black"
       "list-group-item-action list-group-item-dark"
     when "blue"
-      "list-group-item-action list-group-item-primary"
+      "list-group-item-action list-group-item-info"
     when "white"
       ""
     when "gold"
