@@ -22,8 +22,7 @@
     <% @round.scorecards.each do |scorecard| %>
       <ul class="list-group list-group-flush text-center mt-2" style="width: 11%">
         <li class="list-group-item list-group-item-secondary p-2">
-          <small class="form-text">Hole</small>
-          <small class="form-text"><%= scorecard.hole_number %></small>
+          <small class="form-text">Hole <%= scorecard.hole_number %></small>
           <small class="form-text">Par <%= scorecard.par %></small>
           <small class="form-text"><%= scorecard.yardage %> yds</small>
         </li>
