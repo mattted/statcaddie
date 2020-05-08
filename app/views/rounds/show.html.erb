@@ -3,7 +3,9 @@
     <div class="col-8 px-0">
       <h1>Round at <%= @round.course.name %> | <%= @round.datef %></h1> 
       <h5><%= "#{@round.course.city}, #{@round.course.state}" %></h5> 
-      <h5><%= "#{@round.tee} Tees" %></h5> 
+      <h5>Golfer: <%= @round.golfer.name %></h5> 
+      <h5><%= @round.tee %> Tees | Par <%= @round.par %></h5> 
+      <h5>Strokes: <%= @round.par %> | <%= @round.over_under %></h5> 
       <p class="badge badge-secondary"><%= @round.course.access %></p>
       <p class="badge badge-secondary"><%= @round.course.style %></p>
     </div>

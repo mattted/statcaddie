@@ -15,6 +15,7 @@
       <th scope="col">Holes</th>
       <th scope="col">Par</th>
       <th scope="col">Strokes</th>
+      <th scope="col">Over/Under</th>
       <th scope="col">Putts</th>
       <th scope="col">G.I.R.</th>
       <th scope="col">Fairways</th>
@@ -31,6 +32,7 @@
         <td><%= round.scorecards.count %></td>
         <td><%= round.par %></td>
         <td><%= round.total %></td>
+        <td><%= round.over_under %></td>
         <td><%= round.scorecards.sum(:putts) %></td>
         <td><%= round.total_gir %></td>
         <td><%= round.total_fairways %></td>

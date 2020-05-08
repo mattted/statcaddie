@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
   before_action :modify_course_permission, only: [:edit, :destroy, :update]
 
   def index
-    @courses = Course.paginate(page: params[:page], per_page: 15)
+    @courses = Course.by_state.paginate(page: params[:page], per_page: 15)
   end
 
   def index_golfed

@@ -30,7 +30,14 @@ class Round < ApplicationRecord
   end
 
   def over_under
-    self.total - self.par
+    ou = self.total - self.par
+    if ou > 0
+      "+#{ou}"
+    elsif ou == 0
+      "E"
+    else
+      ou
+    end
   end
 
   def datef

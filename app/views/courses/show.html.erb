@@ -9,6 +9,7 @@
         <th scope="col">Date</th>
         <th scope="col">Tees</th>
         <th scope="col">Golfer</th>
+        <th scope="col">Par</th>
         <th scope="col">Strokes</th>
         <th scope="col">Over/Under</th>
         <th scope="col">Round</th>
@@ -21,6 +22,7 @@
           <td><%= round.datef %></td>
           <td><%= round.tee %></td>
           <td><%= round.golfer.name %></td>
+          <td><%= round.par %></td>
           <td><%= round.total %></td>
           <td><%= round.over_under %></td>
           <td><%= link_to 'View', round, class: "btn-sm btn-secondary" %></td>

@@ -15,6 +15,7 @@
       <th scope="col">State</th>
       <th scope="col">Style</th>
       <th scope="col">Access</th>
+      <th scope="col">Created By</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -27,6 +28,7 @@
         <td><%= course.state %></td>
         <td><%= course.style %></td>
         <td><%= course.access %></td>
+        <td><%= course.creator.name %></td>
         <td><%= link_to 'View', course, class: "btn-sm btn-secondary" %></td>
       </tr>
     <% end %>
