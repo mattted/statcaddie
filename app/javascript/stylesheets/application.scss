@@ -29,9 +29,9 @@ $info: $nord9;
 $dark: $nord1;
 $blue: $nord8;
 
-
 @import "~bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed&display=swap');
+@import '@fortawesome/fontawesome-free';
 
 body {
   font-family: 'Fira Sans Extra Condensed', sans-serif; 
@@ -54,6 +54,21 @@ body {
       font-size: 10px;
     }
   }
+}
+
+ul.navbar-nav.nord-nav {
+  color: $nord4;
+
+  .user-icon {
+    margin-top: 7px;
+  }
+  .nav-link {
+    color: $nord4;
+  }
+}
+
+.golf-icon, a.navbar-brand.golf {
+  color: $nord4;
 }
 
 .list-group-item-secondary {

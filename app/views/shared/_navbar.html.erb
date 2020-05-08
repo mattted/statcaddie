@@ -1,11 +1,12 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
-  <a class="navbar-brand" href="#">StatCaddie</a>
+  <span class="golf-icon"><i class="fas fa-golf-ball fa-2x"></i></span>
+  <a class="navbar-brand golf pl-2" href="#">StatCaddie</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav nord-nav mr-auto">
       <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link" %></li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,10 +31,11 @@
       <li class="nav-item"><%= link_to "Stats", rounds_path, class: "nav-link" %></li>
     </ul>
 
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav nord-nav navbar-right">
       <% if user_signed_in? %>
+        <%= fa_icon "user", class: 'user-icon', size: '1x' %>
         <li class="nav-item"><%= link_to current_user.email, edit_user_registration_path, class: "nav-link" %></li>
-        <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link nord-logout" %></li>
       <% else %>
         <li class="nav-item"><%= link_to "Sign Up", signup_path, class: "nav-link" %></li>
         <li class="nav-item"><%= link_to "Login", login_path, class: "nav-link" %></li>
