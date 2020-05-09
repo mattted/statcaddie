@@ -69,7 +69,7 @@ class RoundsController < ApplicationController
 
   def set_round
     unless @round = Round.find_by(id: params[:id])
-      redirect_to home_path, alert: "Could not find a round with that ID."
+      redirect_to rounds_path, alert: "Could not find a round with that ID."
     end
   end
 

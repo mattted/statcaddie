@@ -24,6 +24,10 @@ class User < ApplicationRecord
     self.scorecards.sort_by(&:over_under_num).first(5)
   end
 
+  def best_tee
+     
+  end
+
   def average_round
     ((self.rounds.map(&:total).sum / self.scorecards.count.to_f) * 18).round(2)
   end
