@@ -22,43 +22,78 @@
       <h6>Average Fairways</h6>
       <h4><%= current_user.average_fairways %></h4>
     </div>
-    <div class="col px-0 align-self-end">
+    <div class="col-2 px-0 align-self-end">
       <%= link_to 'Create Course', new_course_path, class: "btn-sm btn-primary float-right" %><br><br>
-      <%= link_to 'New Round', new_round_path, class: "btn-sm btn-info float-right" %><br><br>
+      <%= link_to 'New Round', rounds_factory_path, class: "btn-sm btn-info float-right" %><br><br>
     </div>
   </div>
 </div>
 
-<h5 class="mt-4">Best Rounds</h5>
-  <% if current_user.rounds.blank? %>
-    <h6 class="mb-5">No rounds yet...</h6>
-  <% else %>
-  <table class="table nord text-center mb-5">
-    <thead class="thead nord-head">
-      <tr>
-        <th scope="col">Date</th>
-        <th scope="col">Course</th>
-        <th scope="col">Tees</th>
-        <th scope="col">Par</th>
-        <th scope="col">Strokes</th>
-        <th scope="col">Over/Under</th>
-        <th scope="col">Round</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% current_user.best_rounds.each do |round| %>
+<div class="container p-0">
+  <h5 class="mt-4">Best Rounds</h5>
+    <% if current_user.rounds.blank? %>
+      <h6 class="mb-5">No rounds yet...</h6>
+    <% else %>
+    <table class="table nord text-center mb-5">
+      <thead class="thead nord-head">
         <tr>
-          <td><%= round.datef %></td>
-          <td><%= round.course.name %></td>
-          <td><%= round.tee %></td>
-          <td><%= round.par %></td>
-          <td><%= round.total %></td>
-          <td><%= round.over_under %></td>
-          <td><%= link_to 'View', round, class: "btn-sm btn-secondary" %></td>
+          <th scope="col">Date</th>
+          <th scope="col">Course</th>
+          <th scope="col">Tees</th>
+          <th scope="col">Par</th>
+          <th scope="col">Strokes</th>
+          <th scope="col">Over/Under</th>
+          <th scope="col">Round</th>
         </tr>
-      <% end %>
-    </tbody>
-  <% end %>
-</table>
+      </thead>
 
+      <tbody>
+        <% current_user.best_rounds.each do |round| %>
+          <tr>
+            <td><%= round.datef %></td>
+            <td><%= round.course.name %></td>
+            <td><%= round.tee %></td>
+            <td><%= round.par %></td>
+            <td><%= round.total %></td>
+            <td><%= round.over_under %></td>
+            <td><%= link_to 'View', round, class: "btn-sm btn-secondary" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% end %>
+  </table>
+</div>
+<div class="container p-0">
+  <h5 class="mt-4">Best Holes</h5>
+    <% if current_user.scorecards.blank? %>
+      <h6 class="mb-5">No holes golfed yet...</h6>
+    <% else %>
+    <table class="table nord text-center mb-5">
+      <thead class="thead nord-head">
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Hole/Course</th>
+          <th scope="col">Tees</th>
+          <th scope="col">Par</th>
+          <th scope="col">Strokes</th>
+          <th scope="col">Over/Under</th>
+          <th scope="col">Round</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% current_user.best_holes.each do |hole| %>
+          <tr>
+            <td><%= hole.round.datef %></td>
+            <td>#<%= hole.hole_number %> <%= hole.round.course.name %></td>
+            <td><%= hole.round.tee %></td>
+            <td><%= hole.par %></td>
+            <td><%= hole.strokes %></td>
+            <td><%= hole.over_under %></td>
+            <td><%= link_to 'View', hole.round, class: "btn-sm btn-secondary" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% end %>
+  </table>
+</div>

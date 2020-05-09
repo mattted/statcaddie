@@ -19,6 +19,7 @@
       <th scope="col">Putts</th>
       <th scope="col">G.I.R.</th>
       <th scope="col">Fairways</th>
+      <th scope="col">Golfer</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -36,6 +37,7 @@
         <td><%= round.scorecards.sum(:putts) %></td>
         <td><%= round.total_gir %></td>
         <td><%= round.total_fairways %></td>
+        <td><%= round.golfer.name %></td>
         <td><%= link_to 'View', round, class: "btn-sm btn-secondary" %></td>
       </tr>
     <% end %>

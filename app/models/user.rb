@@ -2,6 +2,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
   has_many :rounds, foreign_key: :golfer_id
+  has_many :scorecards, through: :rounds
   has_many :courses, through: :rounds
   has_many :created_courses, foreign_key: :creator_id, class_name: "Course"
 
@@ -19,8 +20,12 @@ class User < ApplicationRecord
     self.rounds.sort_by(&:over_under_num).first(5)
   end
 
+  def best_holes
+    self.scorecards.sort_by(&:over_under_num).first(5)
+  end
+
   def average_round
-    self.rounds.map(&:total).sum / self.rounds.count.to_f
+    ((self.rounds.map(&:total).sum / self.scorecards.count.to_f) * 18).round(2)
   end
 
   def average_score
@@ -35,11 +40,11 @@ class User < ApplicationRecord
   end
 
   def average_putts
-    self.rounds.map(&:total_putts).sum / self.rounds.count.to_f
+    ((self.rounds.map(&:total_putts).sum / self.scorecards.count.to_f) * 18).round(2)
   end
 
   def average_fairways
-    self.rounds.map(&:total_fairways).sum / self.rounds.count.to_f
+    ((self.rounds.map(&:total_fairways).sum / self.scorecards.count.to_f) * 18).round(2)
   end
 
 end

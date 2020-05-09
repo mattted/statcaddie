@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/golfed_courses', to: 'courses#index_golfed'
   get '/my_rounds', to: 'rounds#index_user'
   get '/course_rounds', to: 'rounds#index_course'
+  get '/stats', to: 'main#stats'
 
   resources :rounds, shallow: true do
     resources :scorecards

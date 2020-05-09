@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row mb-0">
     <div class="col-8 px-0">
-      <h1>Round at <%= @round.course.name %> | <%= @round.datef %></h1> 
-      <h5><%= "#{@round.course.city}, #{@round.course.state}" %></h5> 
+      <h1>Round at <%= @round.course.name %></h1> 
+      <h5><%= @round.datef %> | <%= "#{@round.course.city}, #{@round.course.state}" %></h5> 
       <h5>Golfer: <%= @round.golfer.name %></h5> 
-      <h5><%= @round.tee %> Tees | Par <%= @round.par %></h5> 
-      <h5>Strokes: <%= @round.par %> | <%= @round.over_under %></h5> 
+      <h6><%= @round.tee %> Tees | Par <%= @round.par %></h6> 
       <p class="badge badge-secondary"><%= @round.course.access %></p>
       <p class="badge badge-secondary"><%= @round.course.style %></p>
     </div>
     <div class="col px-0 align-self-end">
+      <h3 class="float-right">Strokes: <%= @round.total %> | <%= @round.over_under %></h3><br><br>
       <% if mod_perm(@round.golfer) %>
         <%= link_to 'Edit Round', edit_round_path(@round), class: "btn-sm btn-secondary float-right" %><br><br>
         <%= link_to 'Delete Round', @round, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-sm btn-danger float-right" %><br><br>
