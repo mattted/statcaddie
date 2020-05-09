@@ -24,8 +24,16 @@ class User < ApplicationRecord
     self.scorecards.sort_by(&:over_under_num).first(5)
   end
 
-  def best_tee
-     
+  def avg_by_tee
+    self.rounds.all.group_by(&:tee).map{ |k,v| { k => (v.map(&:over_under_num).sum / v.count.to_f).round(2) }}.sort_by{ |k| k.values }
+  end
+
+  def avg_by_par
+    self.scorecards.all.group_by(&:par).map{ |k,v| { k => (v.map(&:over_under_num).sum / v.count.to_f).round(2) }}.sort_by{ |k| k.values }
+  end
+
+  def avg_by_style
+    self.rounds.all.group_by(&:style).map{ |k,v| { k => (v.map(&:over_under_num).sum / v.count.to_f).round(2) }}.sort_by{ |k| k.values }
   end
 
   def average_round

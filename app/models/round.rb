@@ -17,6 +17,10 @@ class Round < ApplicationRecord
     self.course.tees.find_by(color: self.tee).par
   end
 
+  def style
+    self.course.style
+  end
+
   def total_putts
     self.scorecards.sum(:putts)
   end
