@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   resources :courses, shallow: true do
+  # resources :courses do
     resources :tees
     resources :holes
   end

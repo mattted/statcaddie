@@ -79,3 +79,9 @@ ul.navbar-nav.nord-nav {
 .nord-link {
   color: $nord13;
 }
+
+.nord-row h4, .nord-col h4 {
+  // border-top: 5px solid $nord4;
+  // border-bottom: 5px solid $nord4;
+  color: $nord11;
+}

@@ -28,6 +28,8 @@ class Scorecard < ApplicationRecord
     end
   end
 
+  private
+
   def set_lid
     self.lid = "#{self.round.course.id}#{self.round.tee}#{self.hole_number}"
   end

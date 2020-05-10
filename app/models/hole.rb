@@ -1,8 +1,12 @@
 class Hole < ApplicationRecord
   belongs_to :tee
   has_one :course, through: :tee
+
   validates :hole_number, :par, :yardage, presence: true
-  before_save :set_lid
+  validates :lid, uniqueness: { message: ": Hole numbers cannot be the same" } 
+  validate :hole_in_range
+
+  before_validation :set_lid
 
   def rounds
     rounds = Round.arel_table
@@ -17,6 +21,12 @@ class Hole < ApplicationRecord
   end
 
   private
+
+  def hole_in_range
+    if hole_number && (hole_number < 1 || hole_number > 18)
+      errors.add(:hole_number, "must be between 1 and 18")
+    end
+  end
   
   def set_lid
     self.lid = "#{self.tee.course.id}#{self.tee.color}#{self.hole_number}"

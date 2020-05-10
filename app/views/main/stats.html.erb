@@ -6,19 +6,19 @@
       <p class="badge badge-secondary">Rounds Golfed: <%= current_user.rounds.count %></p>
       <p class="badge badge-secondary">Created Courses: <%= current_user.created_courses.count %></p>
     </div>
-    <div class="col my-2 text-center align-self-end">
+    <div class="col my-4 text-center align-self-end nord-col">
       <h6>Average Strokes</h6>
       <h4><%= current_user.average_round %></h4>
     </div>
-    <div class="col my-2 text-center align-self-end">
+    <div class="col my-4 text-center align-self-end nord-col">
       <h6>Average Round</h6>
       <h4><%= current_user.average_score %></h4>
     </div>
-    <div class="col my-2 text-center align-self-end">
+    <div class="col my-4 text-center align-self-end nord-col">
       <h6>Average Putts</h6>
       <h4><%= current_user.average_putts %></h4>
     </div>
-    <div class="col my-2 text-center align-self-end">
+    <div class="col my-4 text-center align-self-end nord-col">
       <h6>Average Fairways</h6>
       <h4><%= current_user.average_fairways %></h4>
     </div>
@@ -28,32 +28,32 @@
     </div>
   </div>
 </div>
-<div class="row border-top border-bottom border-secondary">
-    <div class="col my-3 text-center">
+<div class="row nord-row">
+    <div class="col my-2 text-center">
       <h6>Hole-In-One</h6>
       <h4><%= current_user.scorecards.hole_in_one.count %></h4>
     </div>
-    <div class="col my-3 text-center">
+    <div class="col my-2 text-center">
       <h6>Albatross</h6>
       <h4><%= current_user.scorecards.albatross.count %></h4>
     </div>
-    <div class="col my-3 text-center">
+    <div class="col my-2 text-center">
       <h6>Eagle</h6>
       <h4><%= current_user.scorecards.eagle.count %></h4>
     </div>
-    <div class="col my-3 text-center">
+    <div class="col my-2 text-center">
       <h6>Birdie</h6>
       <h4><%= current_user.scorecards.birdie.count %></h4>
     </div>
-    <div class="col my-3 text-center">
+    <div class="col my-2 text-center">
       <h6>Par</h6>
       <h4><%= current_user.scorecards.parr.count %></h4>
     </div>
-    <div class="col my-3 text-center">
+    <div class="col my-2 text-center">
       <h6>Bogey</h6>
       <h4><%= current_user.scorecards.bogey.count %></h4>
     </div>
-    <div class="col my-3 text-center">
+    <div class="col my-2 text-center">
       <h6>Double-Bogey</h6>
       <h4><%= current_user.scorecards.double_bogey.count %></h4>
     </div>
