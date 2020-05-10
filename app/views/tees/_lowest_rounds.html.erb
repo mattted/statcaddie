@@ -1,0 +1,22 @@
+
+  <table class="table nord">
+    <thead class="thead nord-head">
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Golfer</th>
+        <th scope="col">Strokes</th>
+        <th scope="col">Round</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% tee.lowest_rounds.each do |round| %>
+        <tr>
+          <td><%= round.datef %></td>
+          <td><%= round.golfer.name %></td>
+          <td><%= round.total %></td>
+          <td><%= link_to 'View', round, class: "btn-sm btn-secondary" %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>

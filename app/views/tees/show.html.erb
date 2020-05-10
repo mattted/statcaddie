@@ -16,46 +16,13 @@
   </div>
   <div class="row">
     <% @tee.holes.each do |hole| %>
-      <ul class="list-group list-group-flush text-center mt-2" style="width: 11%">
-        <a href=<%= hole_path(hole) %> class="<%= "list-group-item #{tee_list_group_style(@tee)} p-1"%>">
-          <small class="form-text text-muted">Hole</small>
-          <small class="form-text text-muted"><%= hole.hole_number %></small>
-        </a>
-        <li class="<%= "list-group-item p-1"%>">
-          <small class="form-text text-muted">Yardage</small>
-          <small class="form-text text-muted"><%= hole.yardage %></small>
-        </li>
-        <li class="<%= "list-group-item p-1"%>">
-          <small class="form-text text-muted">Par</small>
-          <small class="form-text text-muted"><%= hole.par %></small>
-        </li>
-      </ul>
+      <%= render 'tee_holes', hole: hole %>
     <% end %>
   </div>
 </div>
 <h5>Lowest Rounds</h5>
-  <% if @tee.rounds.blank? %>
-    <h6>No rounds yet...</h6>
-  <% else %>
-  <table class="table nord">
-    <thead class="thead nord-head">
-      <tr>
-        <th scope="col">Date</th>
-        <th scope="col">Golfer</th>
-        <th scope="col">Strokes</th>
-        <th scope="col">Round</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @tee.lowest_rounds.each do |round| %>
-        <tr>
-          <td><%= round.datef %></td>
-          <td><%= round.golfer.name %></td>
-          <td><%= round.total %></td>
-          <td><%= link_to 'View', round, class: "btn-sm btn-secondary" %></td>
-        </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+<% if @tee.rounds.blank? %>
+  <h6>No rounds yet...</h6>
+<% else %>
+<%= render 'lowest_rounds', tee: @tee %> 
+<% end %>

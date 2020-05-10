@@ -1,0 +1,30 @@
+<div class="row nord-row">
+    <div class="col my-2 text-center">
+      <h6>Hole-In-One</h6>
+      <h4><%= current_user.scorecards.hole_in_one.count %></h4>
+    </div>
+    <div class="col my-2 text-center">
+      <h6>Albatross</h6>
+      <h4><%= current_user.scorecards.albatross.count %></h4>
+    </div>
+    <div class="col my-2 text-center">
+      <h6>Eagle</h6>
+      <h4><%= current_user.scorecards.eagle.count %></h4>
+    </div>
+    <div class="col my-2 text-center">
+      <h6>Birdie</h6>
+      <h4><%= current_user.scorecards.birdie.count %></h4>
+    </div>
+    <div class="col my-2 text-center">
+      <h6>Par</h6>
+      <h4><%= current_user.scorecards.parr.count %></h4>
+    </div>
+    <div class="col my-2 text-center">
+      <h6>Bogey</h6>
+      <h4><%= current_user.scorecards.bogey.count %></h4>
+    </div>
+    <div class="col my-2 text-center">
+      <h6>Double-Bogey</h6>
+      <h4><%= current_user.scorecards.double_bogey.count %></h4>
+    </div>
+</div>

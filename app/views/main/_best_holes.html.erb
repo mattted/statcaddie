@@ -1,0 +1,34 @@
+<div class="container p-0">
+  <h5 class="mt-4">Best Holes</h5>
+    <% if current_user.scorecards.blank? %>
+      <h6 class="mb-5">No holes golfed yet...</h6>
+    <% else %>
+    <table class="table nord text-center mb-5">
+      <thead class="thead nord-head">
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Hole/Course</th>
+          <th scope="col">Tees</th>
+          <th scope="col">Par</th>
+          <th scope="col">Strokes</th>
+          <th scope="col">Over/Under</th>
+          <th scope="col">Round</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% current_user.best_holes.each do |hole| %>
+          <tr>
+            <td><%= hole.round.datef %></td>
+            <td>#<%= hole.hole_number %> <%= hole.round.course.name %></td>
+            <td><%= hole.round.tee %></td>
+            <td><%= hole.par %></td>
+            <td><%= hole.strokes %></td>
+            <td><%= hole.over_under %></td>
+            <td><%= link_to 'View', hole.round, class: "btn-sm btn-secondary" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% end %>
+  </table>
+</div>

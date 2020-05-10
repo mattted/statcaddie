@@ -22,43 +22,7 @@
   <div class="row">
 
     <% @round.scorecards.each do |scorecard| %>
-      <ul class="list-group list-group-flush text-center mt-2" style="width: 11%">
-        <li class="list-group-item list-group-item-secondary p-2">
-          <small class="form-text"><%= link_to "Hole #{scorecard.hole_number}", Hole.find_by(lid: scorecard.lid), class: "nord-link" %></small>
-          <small class="form-text">Par <%= scorecard.par %></small>
-          <small class="form-text"><%= scorecard.yardage %> yds</small>
-        </li>
-        <li class="list-group-item p-1">
-          <small class="form-text text-muted">Strokes</small>
-          <% if scorecard.strokes < scorecard.par  %>
-            <small class="form-text text-success"><%= scorecard.strokes %></small>
-          <% elsif scorecard.strokes == scorecard.par %>
-            <small class="form-text"><%= scorecard.strokes %></small>
-          <% else %>
-            <small class="form-text text-danger"><%= scorecard.strokes %></small>
-          <% end %>
-        </li>
-        <li class="list-group-item p-1">
-          <small class="form-text text-muted">Putts</small>
-          <small class="form-text"><%= scorecard.putts %></small>
-        </li>
-        <li class="list-group-item p-1">
-          <small class="form-text text-muted">G.I.R.</small>
-          <% if scorecard.gir %>
-            <p class="text-success">&#9679;</p>
-          <% else %>
-            <p class="text-danger">&#9679;</p>
-          <% end %>
-        </li>
-        <li class="list-group-item p-1">
-          <small class="form-text text-muted">Fairway</small>
-          <% if scorecard.fairway %>
-            <p class="text-success">&#9679;</p>
-          <% else %>
-            <p class="text-danger">&#9679;</p>
-          <% end %>
-        </li>
-      </ul>
+      <%= render 'show_scorecard', scorecard: scorecard %>
     <% end %>
 
   </div>
