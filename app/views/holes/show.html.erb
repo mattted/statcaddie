@@ -9,7 +9,7 @@
       <p class="badge badge-secondary"><%= @hole.tee.course.style %></p>
     </div>
     <div class="col px-0 align-self-end">
-      <%= link_to 'Show Tee', @hole.tee, class: "btn-sm btn-secondary float-right" %><br><br>
+      <%= link_to 'Show Tee', course_tee_path(@hole.tee.course.id, @hole.tee.id), class: "btn-sm btn-secondary float-right" %><br><br>
       <%= link_to 'Show Course', @hole.tee.course, class: "btn-sm btn-secondary float-right" %><br><br>
     </div>
   </div>

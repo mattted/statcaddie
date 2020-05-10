@@ -17,10 +17,10 @@
   <div class="row">
     <% @tee.holes.each do |hole| %>
       <ul class="list-group list-group-flush text-center mt-2" style="width: 11%">
-        <li class="<%= "list-group-item #{tee_list_group_style(@tee)} p-1"%>">
+        <a href=<%= hole_path(hole) %> class="<%= "list-group-item #{tee_list_group_style(@tee)} p-1"%>">
           <small class="form-text text-muted">Hole</small>
           <small class="form-text text-muted"><%= hole.hole_number %></small>
-        </li>
+        </a>
         <li class="<%= "list-group-item p-1"%>">
           <small class="form-text text-muted">Yardage</small>
           <small class="form-text text-muted"><%= hole.yardage %></small>

@@ -19,9 +19,13 @@ Rails.application.routes.draw do
   end
 
   resources :courses, shallow: true do
-  # resources :courses do
-    resources :tees
+    resources :tees, except: [:show]
     resources :holes
   end
+
+  resources :courses do
+    resources :tees, only: [:show]
+  end
+
 
 end
