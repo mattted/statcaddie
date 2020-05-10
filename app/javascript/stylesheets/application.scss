@@ -85,3 +85,10 @@ ul.navbar-nav.nord-nav {
   // border-bottom: 5px solid $nord4;
   color: $nord11;
 }
+
+.field_with_errors {
+  color: $nord11;
+  input, select {
+    border: 1px solid $nord11;
+  }
+}

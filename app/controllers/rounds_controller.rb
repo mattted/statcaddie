@@ -1,7 +1,7 @@
 class RoundsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_round, only: [:show, :edit, :update, :destroy]
-  before_action :modify_round_permission, except: [:index, :index_user, :index_course, :new, :create, :show]
+  before_action :modify_round_permission, except: [:index, :factory, :index_user, :index_course, :new, :create, :show]
 
   def index
     @rounds = Round.order(date: :desc).paginate(page: params[:page], per_page: 15)
@@ -22,7 +22,7 @@ class RoundsController < ApplicationController
   def create
     @round = Round.create(round_params)
     if @round.valid?
-      params[:round][:holes].to_i.times do |i|
+      18.times do |i|
         @round.scorecards.build(hole_number: i+1)
       end
       render 'scorecards'
@@ -36,6 +36,7 @@ class RoundsController < ApplicationController
   end
 
   def edit
+    add_holes
   end
 
   def update

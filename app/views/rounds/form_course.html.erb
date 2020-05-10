@@ -21,8 +21,8 @@
     <%= hidden_field_tag :city, @courses.first.city %>
     <%= label_tag :name, "Course" %>
     <%= select_tag :name, options_for_select(@courses.pluck(:name).uniq.sort), class: "form-control" %>
-    <%= label_tag :holes, "Holes Played" %>
-    <%= select_tag :holes, options_for_select([9, 18]), class: "form-control" %>
+    <%# <%= label_tag :holes, "Holes Played" %1> %>
+    <%# <%= select_tag :holes, options_for_select([9, 18]), class: "form-control" %1> %>
   </div>
   <div class="actions">
     <%= submit_tag "Next", class: "btn btn-primary" %>
