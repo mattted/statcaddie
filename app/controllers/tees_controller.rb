@@ -7,8 +7,6 @@ class TeesController < ApplicationController
     @tee = @course.tees.build
     modify_tee_permission
 
-    # TODO: call a second time with more params
-    # (probably need JS event listener to do automatically)
     18.times do
       @tee.holes.build
     end
@@ -22,6 +20,7 @@ class TeesController < ApplicationController
   end
 
   def edit
+    add_holes
   end
 
   def update
@@ -55,11 +54,18 @@ class TeesController < ApplicationController
     redirect_to course_path(@tee.course), alert: "Sorry. You can only modify courses you've created." if @tee.course.creator_id != current_user.id
   end
 
+  def add_holes
+    (18 - @tee.holes.count).times do
+      @tee.holes.build
+    end
+  end
+
   def error_check(view)
     if @tee.valid?
       redirect_to course_path(@tee.course), notice: "Tee succesfully added."
     else
       flash.now[:alert] = @tee.errors.full_messages.join(', ')
+      add_holes
       render view
     end
   end
