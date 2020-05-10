@@ -1,24 +1,31 @@
-# README
+# StatCaddie
+A small Rails application to log rounds of golf and keep track of stats. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
+Clone the repository locally and run 
 
-Things you may want to cover:
+  $ bundle install
+  $ yarn install --check-files
 
-* Ruby version
+Migrate and seed the database (lines below may need to be prepended with `bundle exec`)
 
-* System dependencies
+  $ rails db:migrate
+  $ rails db:seed
 
-* Configuration
+## Usage
+Start a web server on localhost
 
-* Database creation
+  $ rails server
 
-* Database initialization
+Navigate to address shown (http://localhost:3000)
 
-* How to run the test suite
+Testing account:
+* email: user1@test.com | password: testtest
 
-* Services (job queues, cache servers, search engines, etc.)
+## Contributing
 
-* Deployment instructions
+Bug reports and pull requests are welcome on GitHub at https://github.com/mattted/statcaddie.
 
-* ...
+## License
+
+This application is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
