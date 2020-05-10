@@ -1,7 +1,7 @@
 class RoundsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_round, only: [:show, :edit, :update, :destroy]
-  before_action :modify_round_permission, except: [:index, :index_user, :index_created, :new, :create, :show]
+  before_action :modify_round_permission, except: [:index, :index_user, :index_course, :new, :create, :show]
 
   def index
     @rounds = Round.order(date: :desc).paginate(page: params[:page], per_page: 15)
