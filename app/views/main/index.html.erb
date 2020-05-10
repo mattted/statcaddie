@@ -1,35 +1,25 @@
-<div class="row mt-5">
-  <div class="col">
-    <div class="card text-center">
-      <h5 class="card-header">Create Courses</h5>
+<h1 class="mt-5 mb-4 text-center">StatCaddie</h1>
+<div class="row justify-content-center text-center">
+  <div class="col-sm-6">
+    <div class="card mb-4">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">See Courses</a>
+        <h5 class="card-title">Create Courses</h5>
+        <p class="card-text">Create your own courses or use coures others have already created</p>
+        <%= link_to "See courses", courses_path, class: "btn btn-primary" %>
       </div>
     </div>
-  </div>
-</div>
-<div class="row mt-5">
-  <div class="col">
-    <div class="card text-center">
-      <h5 class="card-header">Log Rounds</h5>
+    <div class="card mb-4">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">See Rounds</a>
+        <h5 class="card-title">Log Rounds</h5>
+        <p class="card-text">Save detailed scorecards for rounds you've played</p>
+        <%= link_to "See rounds", courses_path, class: "btn btn-success" %>
       </div>
     </div>
-  </div>
-</div>
-<div class="row mt-5">
-  <div class="col">
-    <div class="card text-center">
-      <h5 class="card-header">Track Stats</h5>
+    <div class="card mb-4">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Sign Up</a>
+        <h5 class="card-title">Track Stats</h5>
+        <p class="card-text">Keep track of stats based on the rounds, tees, holes and courses you've played</p>
+        <%= link_to "See stats", stats_path, class: "btn btn-info" %>
       </div>
     </div>
   </div>
