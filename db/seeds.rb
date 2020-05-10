@@ -2,6 +2,10 @@ user = User.create(email: "matt@test.com", name: "Matt", password: "testtest")
 user2 = User.create(email: "debbie@test.com", name: "Debbie", password: "testtest")
 user3 = User.create(email: Faker::Internet.email, name: Faker::Name.name, password: "testtest")
 
+# 20.times do
+#   User.create(email: Faker::Internet.email, name: Faker::Name.name, password: "testtest")
+# end
+
 progress_count = 0
 
 User.all.each do |u|

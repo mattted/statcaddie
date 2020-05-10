@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_06_025421) do
+ActiveRecord::Schema.define(version: 2020_05_10_031650) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2020_05_06_025421) do
     t.integer "tee_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "lid"
+    t.index ["lid"], name: "index_holes_on_lid"
     t.index ["tee_id"], name: "index_holes_on_tee_id"
   end
 
@@ -54,6 +56,8 @@ ActiveRecord::Schema.define(version: 2020_05_06_025421) do
     t.integer "round_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "lid"
+    t.index ["lid"], name: "index_scorecards_on_lid"
     t.index ["round_id"], name: "index_scorecards_on_round_id"
   end
 
