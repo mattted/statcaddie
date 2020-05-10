@@ -29,7 +29,7 @@
     <% @rounds.each do |round| %>
       <tr>
         <td><%= round.datef %></td>
-        <td><%= round.course.name %></td>
+        <td><%= link_to round.course.name, round.course %></td>
         <td><%= round.scorecards.count %></td>
         <td><%= round.par %></td>
         <td><%= round.total %></td>

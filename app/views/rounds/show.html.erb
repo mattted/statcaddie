@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mb-0">
     <div class="col-8 px-0">
-      <h1>Round at <%= @round.course.name %></h1> 
+      <h1>Round at <%= link_to @round.course.name, @round.course %></h1> 
       <h5><%= @round.datef %> | <%= "#{@round.course.city}, #{@round.course.state}" %></h5> 
       <h5>Golfer: <%= @round.golfer.name %></h5> 
       <h6><%= @round.tee %> Tees | Par <%= @round.par %></h6> 
@@ -24,7 +24,7 @@
     <% @round.scorecards.each do |scorecard| %>
       <ul class="list-group list-group-flush text-center mt-2" style="width: 11%">
         <li class="list-group-item list-group-item-secondary p-2">
-          <small class="form-text">Hole <%= scorecard.hole_number %></small>
+          <small class="form-text"><%= link_to "Hole #{scorecard.hole_number}", Hole.find_by(lid: scorecard.lid), class: "nord-link" %></small>
           <small class="form-text">Par <%= scorecard.par %></small>
           <small class="form-text"><%= scorecard.yardage %> yds</small>
         </li>

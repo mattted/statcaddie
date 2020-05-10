@@ -3,6 +3,7 @@ class Scorecard < ApplicationRecord
   has_one :golfer, through: :round, class_name: "User"
   validates :hole_number, :strokes, :putts, presence: true
   before_save :set_lid
+  before_save :set_hole_atts
 
   def par
     # self.round.course.tees.find_by(color: self.round.tee).holes.find_by(hole_number: self.hole_number).par
@@ -31,6 +32,10 @@ class Scorecard < ApplicationRecord
 
   def set_lid
     self.lid = "#{self.round.course.id}#{self.round.tee}#{self.hole_number}"
+  end
+
+  def set_hole_atts
+    # TODO
   end
 
 end
