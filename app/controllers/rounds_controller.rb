@@ -1,6 +1,6 @@
 class RoundsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_round, only: [:show, :edit, :update]
+  before_action :set_round, only: [:show, :edit, :update, :destroy]
 
   def index
     @rounds = Round.order(date: :desc).paginate(page: params[:page], per_page: 15)
@@ -26,6 +26,8 @@ class RoundsController < ApplicationController
       end
       render 'scorecards'
     else
+      flash.now[:alert] = @round.errors.full_messages.join(', ')
+      render 'new'
     end
   end
 
@@ -42,6 +44,11 @@ class RoundsController < ApplicationController
     else
       error_check('edit')
     end
+  end
+
+  def destroy
+    @round.destroy
+    redirect_to my_rounds_path, notice: "Successfully deleted."
   end
 
   def factory
