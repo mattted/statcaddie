@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_10_031650) do
+ActiveRecord::Schema.define(version: 2020_05_10_061757) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 2020_05_10_031650) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "lid"
+    t.integer "par"
+    t.integer "yardage"
     t.index ["lid"], name: "index_scorecards_on_lid"
     t.index ["round_id"], name: "index_scorecards_on_round_id"
   end

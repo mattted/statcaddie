@@ -5,15 +5,13 @@ class Scorecard < ApplicationRecord
   before_save :set_lid
   before_save :set_hole_atts
 
-  def par
-    # self.round.course.tees.find_by(color: self.round.tee).holes.find_by(hole_number: self.hole_number).par
-    Hole.find_by(lid: self.lid).par
-  end
-
-  def yardage
-    # self.round.course.tees.find_by(color: self.round.tee).holes.find_by(hole_number: self.hole_number).yardage
-    Hole.find_by(lid: self.lid).yardage
-  end
+  scope :hole_in_one, -> { where(strokes: 1) }
+  scope :albatross, -> { where(strokes: 2, par: 5) }
+  scope :eagle, -> { where("strokes = 2 AND par = 4 OR strokes = 3 AND par = 5") }
+  scope :birdie, -> { where("par - strokes = 1") }
+  scope :parr, -> { where("par = strokes") }
+  scope :bogey, -> { where("strokes - par = 1") }
+  scope :double_bogey, -> { where("strokes - par = 2") }
 
   def over_under_num
     self.strokes - self.par
@@ -35,7 +33,7 @@ class Scorecard < ApplicationRecord
   end
 
   def set_hole_atts
-    # TODO
+    self.par = Hole.find_by(lid: self.lid).par
+    self.yardage = Hole.find_by(lid: self.lid).yardage
   end
-
 end

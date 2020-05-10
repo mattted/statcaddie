@@ -1,6 +1,7 @@
 class RoundsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_round, only: [:show, :edit, :update, :destroy]
+  before_action :modify_round_permission, except: [:index, :index_user, :index_created, :new, :create, :show]
 
   def index
     @rounds = Round.order(date: :desc).paginate(page: params[:page], per_page: 15)
@@ -86,6 +87,16 @@ class RoundsController < ApplicationController
   def round_params
     params.require(:round).permit(:course_id, :golfer_id, :date, :tee,
                                   scorecards_attributes: [:fairway, :gir, :hole_number, :notes, :putts, :strokes, :id])
+  end
+
+  def add_holes
+    (18 - @round.scorecards.count).times do
+      @round.scorecards.build
+    end
+  end
+
+  def modify_round_permission
+    redirect_to my_rounds_path, alert: "Sorry. You can only modify rounds you've created." if @round.golfer_id != current_user.id
   end
 
 end

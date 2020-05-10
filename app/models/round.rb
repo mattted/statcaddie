@@ -14,7 +14,7 @@ class Round < ApplicationRecord
   end
 
   def par
-    self.course.tees.find_by(color: self.tee).par
+    self.scorecards.sum(:par)
   end
 
   def style

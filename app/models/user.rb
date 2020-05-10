@@ -59,4 +59,20 @@ class User < ApplicationRecord
     ((self.rounds.map(&:total_fairways).sum / self.scorecards.count.to_f) * 18).round(2)
   end
 
+  def hole_in_one
+    self.scorecards.where(strokes: 1).count
+  end
+
+  def albatross
+    self.scorecards.where(strokes: 2, par: 5).count
+  end
+
+  def eagle
+    self.scorecards.where("strokes = 2 AND par = 4 OR strokes = 3 AND par = 5")
+  end
+
+  def birdie
+    self.scorecards.where("par - strokes = 1")
+  end
+
 end
