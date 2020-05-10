@@ -21,7 +21,7 @@ Navigate to address shown (http://localhost:3000)
 
 Testing account:
  > email: user1@test.com
- > password: testtest
+ >  |  password: testtest
 
 ## Contributing
 
