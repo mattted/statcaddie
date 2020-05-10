@@ -4,7 +4,6 @@ class TeesController < ApplicationController
   before_action :modify_tee_permission, except: [:new, :create, :show]
 
   def new
-    set_course
     @tee = @course.tees.build
     modify_tee_permission
 
@@ -16,7 +15,6 @@ class TeesController < ApplicationController
   end
 
   def create
-    set_course
     @tee = @course.tees.build(tee_params)
     modify_tee_permission
     @tee.save

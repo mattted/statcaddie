@@ -1,5 +1,6 @@
 class RoundsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_round, only: [:show, :edit, :update]
 
   def index
     @rounds = Round.order(date: :desc).paginate(page: params[:page], per_page: 15)
@@ -29,15 +30,12 @@ class RoundsController < ApplicationController
   end
 
   def show
-    set_round
   end
 
   def edit
-    set_round
   end
 
   def update
-    set_round
     @round.update(round_params)
     if @round.valid?
       redirect_to round_path(@round)
