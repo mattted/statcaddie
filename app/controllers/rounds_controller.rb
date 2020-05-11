@@ -42,7 +42,7 @@ class RoundsController < ApplicationController
   def update
     @round.update(round_params)
     if @round.valid?
-      redirect_to round_path(@round)
+      redirect_to round_path(@round), alert: "Round updated successfully"
     else
       error_check('edit')
     end

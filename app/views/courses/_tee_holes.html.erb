@@ -4,7 +4,7 @@
       <h6><%= tee.color %> Tees</h6>
     </div>
     <div class="col-auto pl-3">
-      <%= link_to "View", course_tee_path(tee), class: "badge badge-primary" %>
+      <%= link_to "View", course_tee_path(tee.course, tee), class: "badge badge-primary" %>
       <% if mod_perm(tee.course.creator) %>
         <%= link_to "Edit", edit_tee_path(tee), class: "badge badge-secondary" %>
         <%= link_to 'Delete', tee, method: :delete, data: { confirm: 'Are you sure?' }, class: "badge badge-danger" %>
