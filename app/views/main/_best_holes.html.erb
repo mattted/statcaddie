@@ -25,7 +25,7 @@
             <td><%= hole.par %></td>
             <td><%= hole.strokes %></td>
             <td><%= hole.over_under %></td>
-            <td><%= link_to 'View', hole.round, class: "btn-sm btn-secondary" %></td>
+            <td><%= link_to 'View', hole_path(hole), class: "btn-sm btn-secondary" %></td>
           </tr>
         <% end %>
       </tbody>
